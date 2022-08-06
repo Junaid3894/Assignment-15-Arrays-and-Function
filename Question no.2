@@ -1,0 +1,36 @@
+/*2. Write a function to find the smallest number from the given array of any size. (TSRS)*/
+
+#include<stdio.h>
+// Function decleartion
+int maxfunc(int arr[],int n);
+int main()
+{
+int arr[20];
+int n;
+printf("Enter the size of array :");
+scanf("%d",&n);
+for(int i=0;i<n;i++){
+    printf("Enter the %d value of array :",i+1);
+    scanf("%d",&arr[i]);
+}
+printf("Your Smallest value in an array is %d ",maxfunc(&arr[0],n));
+
+return 0;
+}
+// Function defination
+int maxfunc(int arr[],int n){
+//logic to find smalllest
+int temp;
+for(int i=0;i<n;i++){
+    for(int j=i+1;j<n;j++){
+        if(arr[i]>arr[j]){
+            temp=arr[i];
+            arr[i]=arr[j];
+            arr[j]=temp;
+        }
+    }
+
+}
+return arr[0];
+
+}
