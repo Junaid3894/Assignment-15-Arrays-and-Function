@@ -1,0 +1,37 @@
+/*3. Write a function to sort an array of any size. (TSRN)*/
+#include<stdio.h>
+// Function decleartion
+void sorting(int arr[],int n);
+int main()
+{
+int arr[20];
+int n;
+printf("Enter the size of array :");
+scanf("%d",&n);
+for(int i=0;i<n;i++){
+    printf("Enter the %d value of array :",i+1);
+    scanf("%d",&arr[i]);
+}
+sorting(arr,n);
+
+return 0;
+}
+// Function defination
+void sorting(int arr[],int n){
+int temp;
+for(int i=0;i<n;i++){
+    for(int j=i+1;j<n;j++){
+        if(arr[i]<arr[j]){
+            temp=arr[i];
+            arr[i]=arr[j];
+            arr[j]=temp;
+        }
+    }
+
+}
+printf("Your array after sorting :\n");
+for(int i=0;i<n;i++){
+    printf("%d\t",arr[i]);
+}
+
+}
