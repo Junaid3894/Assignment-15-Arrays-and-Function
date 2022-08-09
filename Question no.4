@@ -1,66 +1,65 @@
-#include<stdio.h>
+/*4. Write a function to rotate an array by n position in d direction. The d is an indicative
+value for left or right. (For example, if array of size 5 is [32, 29, 40, 12, 70]; n is 2 and
+d is left, then the resulting array after left rotation 2 times is [40, 12, 70, 32, 29] )*/
 
-// function declaration
-int* reverse_function(int*,int first,int last);
-void print_array(int*,int);
+#include <stdio.h>
+int rotate(int arr[], int size, int n, int d)
+{
+    switch (d)
+    {
+    case 1:
+        for (int j = 1; j <= n; j++)
+        {
+            int temp;
+            temp = arr[0];
+            for (int i = 0; i < size - 1; i++)
+            {
+                arr[i] = arr[i + 1];
+            }
+            arr[size - 1] = temp;
+        }
+        
+    for (int i = 0; i < size; i++)
+    {
+        printf("%d\t", arr[i]);
+    }
+        break;
+    case 2:
+        for (int j = 1; j <= n; j++)
+        {
+            int temp;
+            temp = arr[size - 1];
+            for (int i = 0; i < size; i++)
+            {
+                arr[size - 1 - i] = arr[size - 2 - i];
+            }
+            arr[0] = temp;
+        }
+        for (int i = 0; i < size; i++)
+    {
+        printf("%d\t", arr[i]);
+    }
+        break;
+    default:
+    printf("Invalid choice please choose 1 or 2 ");    
+    }
 
-//main function
-int main(){
-   int size,n,*p; 
-   printf("Enter your array size and no of rotations: ");
-   scanf("%d %d",&size,&n);
-   int array[size];
-   
-   // taking array as input
-   for(int i = 0; i<size; i++){
-      printf("Enter the %d value of array :",i+1);
-      scanf("%d",&array[i]);
-   }
-
-
-   int direction;
-   printf("for right rotation press 0 and for left rotation press 1: ");
-   scanf("%d",&direction);
-   switch(direction){
-   //calling function
-      case 0:
-      //reversing array from n to last;
-      p = reverse_function(array,size-n,size-1);
-      // reversing remaining array from first to n;
-      p = reverse_function(p,0,size-n-1);
-      // reversing whole array for output 
-      p = reverse_function(p,0,size-1);
-      //printing array by calling function
-      print_array(p,size);
-      break;
-
-      case 1:
-      //reversing array from 0 to n;
-      p = reverse_function(array,0,n-1);
-      // reversing remaining array from n-1 to size-1
-      p = reverse_function(p,n,size-1);
-      //reversing whole array
-      p = reverse_function(p,0,size-1);
-      //printing array by calling function
-      print_array(p,size);
-      break;
-   }
 }
-
-// function definition
-int* reverse_function(int arr[] ,int first, int last){
-   while(first < last){
-      int temp = arr[first];
-      arr[first] = arr[last];
-      arr[last] = temp;
-      first++;
-      last--;
-   }
-   return arr;
-}
-
-void print_array(int *arr,int size){
-   for(int i = 0; i<size;i++){
-      printf("%d ",arr[i]);
-   }
+int main()
+{
+    int arr[20];
+    int size, n, d;
+    printf("Enter the size of the array :");
+    scanf("%d", &size);
+    for (int i = 0; i < size; i++)
+    {
+        printf("Enter the %d value of array :", i + 1);
+        scanf("%d", &arr[i]);
+    }
+    printf("Enter the number how many times you want rotate the array :");
+    scanf("%d", &n);
+    printf("Enter direction of position - Left/right\n 1 is for left direction and 2 is for right  direction :");
+    scanf("%d", &d);
+    rotate(arr, size, n, d);
+    return 0;
 }
