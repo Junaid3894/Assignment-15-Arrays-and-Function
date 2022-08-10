@@ -1,32 +1,41 @@
-/*8. Write a function in C to print all unique elements in an array.
-*/
+/*write a function in c to print all unique elements in an array*/
 
 #include<stdio.h>
-int count_arr(int *arr,int size);
-int main()
-{
-int arr[20];
-int size;
-printf("Enter the size of the array :");
-scanf("%d",&size);
-for(int i=0;i<size;i++){
-    printf("Enter the %d value of the array :",i+1);
-    scanf("%d",&arr[i]);
-}
-count_arr(arr,size);
 
-return 0;
-}
-int count_arr(int *arr,int size){
-    int j;
-    for(int i=0;i<size;i++){
-        for(j=0;j<size;j++){
-            if(arr[i]==arr[j] && i!=j ){
-                break;}
-        }
-        if(j==size){
-            printf("%d",arr[i]);
-        }
+//function declaration
+int unique_element(int* , int);
 
-    }    
-} 
+// main function
+int main(){
+   int size; 
+   printf("Enter your array size: ");
+   scanf("%d",&size);
+   int array[size];
+   unique_element(array,size);
+}
+
+int unique_element(int *arr , int size){
+   int arr2[20];
+   int j;
+   for(int i = 0; i<size; i++){
+   printf("Enter your %d arraY: ",i+1);
+      scanf("%d",&arr[i]);
+      arr2[i]=0;
+   }
+
+   for(int i = 0; i< size;i++){
+      for( j = 0; j < size; j++){
+         if(arr[i]==arr[j] && i != j){
+            break;
+         }
+      }
+      if(j == size){
+         arr2[i]=arr[i];
+      }
+   }
+   for(int i=0;i<size;i++){
+      if(arr2[i]!=0){
+         printf("%d\t",arr2[i]);
+      }
+   }
+}
